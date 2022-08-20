@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "570322654555",
+    "project_id": "fello-test",
+    "storage_bucket": "fello-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570322654555:android:70f8e67462583d5582f67e",
+        "android_client_info": {
+          "package_name": "com.yoo.fello_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "570322654555-cv8vcr7c8omsocsu2q44bt99qfhjhq00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeYCvKr0fkHzjONYPJ58sezjk3-ceHOEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "570322654555-cv8vcr7c8omsocsu2q44bt99qfhjhq00.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
