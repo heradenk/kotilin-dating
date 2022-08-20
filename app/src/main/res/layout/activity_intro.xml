@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 =======
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 >>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
@@ -13,6 +17,7 @@
     tools:context=".auth.IntroActivity">
 
     <LinearLayout
+<<<<<<< HEAD
 <<<<<<< HEAD
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,6 +45,8 @@
 
     </LinearLayout>
 =======
+=======
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
         android:id="@+id/linearLayout3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -76,6 +83,9 @@
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+<<<<<<< HEAD
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
+=======
 >>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 
 

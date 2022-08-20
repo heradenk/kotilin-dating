@@ -2,6 +2,7 @@ package com.yoo.fello_test
 
 import android.content.Intent
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
@@ -15,18 +16,24 @@ class SplashActivity : AppCompatActivity() {
 //    private val auth = FirebaseAuth.getInstance()
 
 =======
+=======
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.yoo.fello_test.auth.IntroActivity
 
 class SplashActivity : AppCompatActivity() {
+<<<<<<< HEAD
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
+=======
 >>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 //        val uid =  auth.currentUser?.uid.toString()
         val uid = FirebaseAuthUtils.getUid()
@@ -53,12 +60,17 @@ class SplashActivity : AppCompatActivity() {
 
 
 =======
+=======
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
         Handler().postDelayed({
             val intent = Intent(this, IntroActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
             finish()
         },3000)
+<<<<<<< HEAD
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
+=======
 >>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 
 

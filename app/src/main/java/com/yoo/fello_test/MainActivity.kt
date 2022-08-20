@@ -1,6 +1,7 @@
 package com.yoo.fello_test
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.yoo.fello_test.auth.IntroActivity
+=======
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.View
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 =======
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -31,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         val setting = findViewById<ImageView>(R.id.settingIcon)
         setting.setOnClickListener{
 
@@ -43,6 +50,8 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+=======
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 =======
 >>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
         val cardStackView = findViewById<CardStackView>(R.id.cardStackView)

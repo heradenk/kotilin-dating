@@ -2,7 +2,10 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 <<<<<<< HEAD
+<<<<<<< HEAD
     id 'com.google.gms.google-services'
+=======
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 =======
 >>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 }
@@ -13,7 +16,11 @@ android {
     defaultConfig {
         applicationId "com.yoo.fello_test"
 <<<<<<< HEAD
+<<<<<<< HEAD
         minSdk 26
+=======
+        minSdk 33
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 =======
         minSdk 33
 >>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
@@ -40,8 +47,11 @@ android {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 =======
 >>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 dependencies {
@@ -57,10 +67,13 @@ dependencies {
 
     implementation "com.yuyakaido.android:card-stack-view:2.3.4"
 <<<<<<< HEAD
+<<<<<<< HEAD
     implementation platform('com.google.firebase:firebase-bom:28.3.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     implementation 'com.google.firebase:firebase-auth-ktx'
+=======
+>>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 =======
 >>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
 }
