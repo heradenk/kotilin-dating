@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yoo.fello_test">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,19 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fello_test">
         <activity
-<<<<<<< HEAD
-<<<<<<< HEAD
+            android:name=".setting.SettingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".setting.MyPageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".auth.IntroActivity"
+            android:exported="true" />
+        <activity
             android:name=".auth.LoginActivity"
             android:exported="true" />
         <activity
             android:name=".auth.JoinActivity"
-            android:exported="true" />
-        <activity
-=======
->>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
-=======
->>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
-            android:name=".auth.IntroActivity"
             android:exported="true" />
         <activity
             android:name=".SplashActivity"
@@ -32,26 +34,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-<<<<<<< HEAD
-<<<<<<< HEAD
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-=======
-=======
->>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
-
-        </activity>
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-        </activity>
-<<<<<<< HEAD
->>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
-=======
->>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
     </application>
 
 </manifest>

@@ -2,8 +2,10 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        jcenter() //추가
+        maven { url 'https://jitpack.io' } //추가
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
+//        jcenter() // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "fello_test"

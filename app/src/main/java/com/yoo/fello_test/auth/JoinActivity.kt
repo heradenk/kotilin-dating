@@ -1,22 +1,39 @@
 package com.yoo.fello_test.auth
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.yoo.fello_test.MainActivity
 import com.yoo.fello_test.R
+import com.yoo.fello_test.utils.FirebaseRef
+import java.io.ByteArrayOutputStream
 
 class JoinActivity : AppCompatActivity() {
 
     private val TAG = "JoinActivity"
 
     private lateinit var auth: FirebaseAuth
+
+
+    private var nickname =""
+    private var gender =""
+    private var city =""
+    private var age =""
+    private var uid =""
+
+    lateinit var profileImage : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -25,22 +42,64 @@ class JoinActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
+        profileImage = findViewById(R.id.imageArea)
+
+
+        val getAction = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback { uri ->
+                profileImage.setImageURI(uri)
+        }
+    )
+
+        profileImage.setOnClickListener {
+            getAction.launch("image/*")
+        }
+
         val joinBtn = findViewById<Button>(R.id.joinBtn)
         joinBtn.setOnClickListener {
 
             val email = findViewById<TextInputEditText>(R.id.emailArea)
             val pwd = findViewById<TextInputEditText>(R.id.pwdArea)
 
-//            Log.d(TAG, email.text.toString())
-//            Log.d(TAG, pwd.text.toString())
+            // 빈 칸 및 pwdcheck 추가
+
+//            var emailCheck = email.text.toString()
+//
+//            if(emailCheck.isEmpty()){
+//                Toast.makeText(this, "비어있음", Toast.LENGTH_LONG).show()
+//            } else {
+//                Toast.makeText(this, "비어있음ㄴㄴ", Toast.LENGTH_LONG).show()
+//            }
+
+            gender = findViewById<TextInputEditText>(R.id.genderArea).text.toString()
+            city = findViewById<TextInputEditText>(R.id.cityArea).text.toString()
+            age = findViewById<TextInputEditText>(R.id.ageArea).text.toString()
+            nickname = findViewById<TextInputEditText>(R.id.nicknameArea).text.toString()
+
 
             auth.createUserWithEmailAndPassword(email.text.toString(), pwd.text.toString())
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "createUserWithEmail:success")
+
                         val user = auth.currentUser
-                        Log.d(TAG, user?.uid.toString())
+                        uid = user?.uid.toString()
+
+                        val userModel = UserDataModel(
+                            uid,
+                            nickname,
+                            age,
+                            gender,
+                            city
+                        )
+
+                        FirebaseRef.userInfoRef.child(uid).setValue(userModel)
+
+                        uploadImage(uid)
+
+
+
 
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
@@ -57,4 +116,33 @@ class JoinActivity : AppCompatActivity() {
 
         }
     }
+
+
+    private fun uploadImage(uid : String){
+
+        val storage = Firebase.storage
+        val storageRef = storage.reference.child(uid + ".png")
+
+
+
+        // Get the data from an ImageView as bytes
+        profileImage.isDrawingCacheEnabled = true
+        profileImage.buildDrawingCache()
+        val bitmap = (profileImage.drawable as BitmapDrawable).bitmap
+        val baos = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        var uploadTask = storageRef.putBytes(data)
+        uploadTask.addOnFailureListener {
+            // Handle unsuccessful uploads
+        }.addOnSuccessListener { taskSnapshot ->
+            // taskSnapshot.metadata contains file metadata such as size, content-type, etc.
+            // ...
+        }
+
+    }
+
+
+
 }

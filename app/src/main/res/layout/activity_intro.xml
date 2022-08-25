@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<<<<<<< HEAD
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-=======
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
-=======
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,8 +9,6 @@
     tools:context=".auth.IntroActivity">
 
     <LinearLayout
-<<<<<<< HEAD
-<<<<<<< HEAD
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -44,49 +34,5 @@
             android:text="Login" />
 
     </LinearLayout>
-=======
-=======
->>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
-        android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:background="@color/mainColor"
-        android:layout_margin="10dp"
-        android:text="Login"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:background="@color/mainColor"
-        android:layout_margin="10dp"
-        android:text="Join"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-<<<<<<< HEAD
->>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
-=======
->>>>>>> 0d2615b6b18e2c69c22241070cf85c0f3cdd1c54
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
