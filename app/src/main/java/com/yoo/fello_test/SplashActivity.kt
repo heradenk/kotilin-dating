@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.yoo.fello_test.auth.IntroActivity
 import com.yoo.fello_test.utils.FirebaseAuthUtils
 
@@ -19,7 +22,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
 //        val uid =  auth.currentUser?.uid.toString()
+
+
+
         val uid = FirebaseAuthUtils.getUid()
+
         if (uid == "null") {
 
             Handler(Looper.getMainLooper()).postDelayed({

@@ -188,6 +188,7 @@ class MainActivity : AppCompatActivity() {
 
     // 내가 좋아요한 사람의 좋아요 리스트
     private fun getOtherUserLikeList(otherUid: String){
+
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 

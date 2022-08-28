@@ -8,6 +8,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.yoo.fello_test.R
 import com.yoo.fello_test.auth.IntroActivity
+import com.yoo.fello_test.message.MyLikeListActivity
 
 class SettingActivity : AppCompatActivity() {
 
@@ -21,6 +22,15 @@ class SettingActivity : AppCompatActivity() {
 
             val intent = Intent(this, MyPageActivity::class.java)
             startActivity(intent)
+
+        }
+
+        val myLikeBtn = findViewById<Button>(R.id.myLikeList)
+        myLikeBtn.setOnClickListener {
+
+            val intent = Intent(this, MyLikeListActivity::class.java)
+            startActivity(intent)
+
         }
 
         val logoutbtn = findViewById<Button>(R.id.logoutBtn)
