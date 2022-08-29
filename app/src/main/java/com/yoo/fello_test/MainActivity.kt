@@ -21,6 +21,7 @@ import com.yoo.fello_test.setting.SettingActivity
 import com.yoo.fello_test.slider.CardStackAdapter
 import com.yoo.fello_test.utils.FirebaseAuthUtils
 import com.yoo.fello_test.utils.FirebaseRef
+import com.yoo.fello_test.utils.MyInfo
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView
@@ -130,6 +131,8 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, data?.gender.toString())
 
                 currentUserGender = data?.gender.toString()
+
+                MyInfo.myNickname = data?.nickname.toString()
 
                 getUserDataList(currentUserGender)
 

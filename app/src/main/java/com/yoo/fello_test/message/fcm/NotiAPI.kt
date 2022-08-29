@@ -2,7 +2,6 @@ package com.yoo.fello_test.message.fcm
 
 import com.yoo.fello_test.message.fcm.Repo.Companion.CONTENT_TYPE
 import com.yoo.fello_test.message.fcm.Repo.Companion.SERVER_KEY
-import com.yoo.fello_test.message.fcm.Repo.Companion.SERVER_KEY
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body

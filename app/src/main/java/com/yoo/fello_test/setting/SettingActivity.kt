@@ -9,6 +9,7 @@ import com.google.firebase.ktx.Firebase
 import com.yoo.fello_test.R
 import com.yoo.fello_test.auth.IntroActivity
 import com.yoo.fello_test.message.MyLikeListActivity
+import com.yoo.fello_test.message.MyMsgActivity
 
 class SettingActivity : AppCompatActivity() {
 
@@ -29,6 +30,14 @@ class SettingActivity : AppCompatActivity() {
         myLikeBtn.setOnClickListener {
 
             val intent = Intent(this, MyLikeListActivity::class.java)
+            startActivity(intent)
+
+        }
+
+        val myMsg = findViewById<Button>(R.id.myMsg)
+        myMsg.setOnClickListener {
+
+            val intent = Intent(this, MyMsgActivity::class.java)
             startActivity(intent)
 
         }

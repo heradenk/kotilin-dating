@@ -2,16 +2,27 @@ package com.yoo.fello_test.message
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.yoo.fello_test.R
 import com.yoo.fello_test.auth.UserDataModel
+import com.yoo.fello_test.message.fcm.NotiModel
+import com.yoo.fello_test.message.fcm.PushNotification
+import com.yoo.fello_test.message.fcm.RetrofitInstance
 import com.yoo.fello_test.utils.FirebaseAuthUtils
 import com.yoo.fello_test.utils.FirebaseRef
+import com.yoo.fello_test.utils.MyInfo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 // 매칭 리스트
@@ -24,6 +35,8 @@ class MyLikeListActivity : AppCompatActivity() {
     private val likeUserList = mutableListOf<UserDataModel>()
 
     lateinit var listViewAdapter: ListViewAdapter
+    lateinit var getterUid : String
+    lateinit var getterToken : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -44,12 +57,35 @@ class MyLikeListActivity : AppCompatActivity() {
 
         // 내가 좋아요한 유저 가져와서 나와의 매칭을 확인
 
-        userListView.setOnItemClickListener { parent, view, position, id ->
+//        userListView.setOnItemClickListener { parent, view, position, id ->
+//
+////            Log.d(TAG, likeUserList[position].uid.toString())
+//            checkMatching(likeUserList[position].uid.toString())
+//
+//            val notiModel = NotiModel("a", "b")
+//
+//            val pushModel = PushNotification(notiModel, likeUserList[position].token.toString())
+//
+//            testPush(pushModel)
+//        }
 
-            Log.d(TAG, likeUserList[position].uid.toString())
-            checkMatching(likeUserList[position].uid.toString())
+
+        //꾹 누르기(Long Click)
+        userListView.setOnItemLongClickListener{ parent, view, position, id ->
+
+        checkMatching(likeUserList[position].uid.toString())
+        getterUid = likeUserList[position].uid.toString()
+        getterToken = likeUserList[position].token.toString()
+
+        return@setOnItemLongClickListener(true)
 
         }
+
+        // 매칭한 유저를 클릭하면 메세지 보낼 수 있음(Long CLick)
+        // 메시지 창 구성
+        // 메시지 PUSH
+
+
 
 
     }
@@ -63,17 +99,20 @@ class MyLikeListActivity : AppCompatActivity() {
                 Log.e(TAG, dataSnapshot.toString())
 
                 if (dataSnapshot.children.count() == 0) {
-                    Toast.makeText(this@MyLikeListActivity, "매칭이 안 되었습니다", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(this@MyLikeListActivity, "상대방이 좋아요한 사람이 아무도 없습니다", Toast.LENGTH_SHORT).show()
                 } else {
 
                     for (dataModel in dataSnapshot.children) {
                         val likeUserKey = dataModel.key.toString()
                         if (likeUserKey.equals(uid)) {
-                            Toast.makeText(this@MyLikeListActivity, "매칭이 되었습니다", Toast.LENGTH_SHORT)
-                                .show()
+
+                            Toast.makeText(this@MyLikeListActivity, "매칭이 되었습니다", Toast.LENGTH_SHORT).show()
+                            showDialog()
+
+
+
                         } else {
-                            Toast.makeText(this@MyLikeListActivity, "매칭이 안 되었습니다", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(this@MyLikeListActivity, "매칭이 안 되었습니다", Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -145,6 +184,50 @@ class MyLikeListActivity : AppCompatActivity() {
         FirebaseRef.userInfoRef.addValueEventListener(postListener)
 
     }
+
+    //Push
+    private fun testPush(notification : PushNotification) = CoroutineScope(Dispatchers.IO).launch {
+
+        RetrofitInstance.api.postNotification(notification)
+    }
+
+
+    // Dialog
+    private fun showDialog(){
+
+        val mDialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog, null)
+        val mBuilder = AlertDialog.Builder(this)
+            .setView(mDialogView)
+            .setTitle("메시지 보내기")
+
+        val mAlertDialog = mBuilder.show()
+
+        val btn = mAlertDialog.findViewById<Button>(R.id.sendBtnArea)
+        val textArea = mAlertDialog.findViewById<EditText>(R.id.sendTextArea)
+        btn?.setOnClickListener {
+
+            val msgText = textArea!!.text.toString()
+
+            val msgModel = MsgModel(MyInfo.myNickname, msgText)
+
+            FirebaseRef.userMsgRef.child(getterUid).push().setValue(msgModel)
+
+            val notiModel = NotiModel(MyInfo.myNickname,msgText )
+
+            val pushModel = PushNotification(notiModel, getterToken)
+
+            testPush(pushModel)
+
+            mAlertDialog.dismiss()
+        }
+
+
+        // message
+        //받는 사람 uid
+        //Message 내용
+        // 보낸 사람
+    }
+
 
 
 }

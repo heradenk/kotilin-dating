@@ -1,8 +1,8 @@
 package com.yoo.fello_test.message.fcm
 
-class PushNotification ()
+class PushNotification (
     val data : NotiModel,
-    val token : String
+    val to : String
 
 
 )
